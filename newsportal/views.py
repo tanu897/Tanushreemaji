@@ -57,36 +57,38 @@ def event(request):
         event
     context={'event':event}
     return render(request, 'home/event.html',context)
-def cdc(request):
-    return render(request, 'home/cdc.html')
-
+def Career_DC(request):
+    return render(request, 'home/Career_DC.html')
 def ece(request):
-    #ece=News.objects.filter(dept='Electronics&Communication').order_by('postedtime')
-    try:
-        newsdetails = News.objects.filter(dept='Electronics&Communication').order_by('postedtime')
-    except News.DoesNotExist:
-        newsdetails = None
-    ece = []
-    if newsdetails is not None:
-        for ND in newsdetails:
-            if ND.status:
-                 ece.append({
-                "id": ND.id,
-                "headlines": ND.headlines,
-                "details": ND.details,
-                'dept': ND.dept,
-                'owner': ND.owner,
-                'img':ND.img,
-                "postedtime": ND.postedtime
-            })
-            else:
-                ece
-    else:
-        ece
+    return render(request, 'home/ece.html')
+
+# def ece(request):
+#     #ece=News.objects.filter(dept='Electronics&Communication').order_by('postedtime')
+#     try:
+#         newsdetails = News.objects.filter(dept='Electronics&Communication').order_by('postedtime')
+#     except News.DoesNotExist:
+#         newsdetails = None
+#     ece = []
+#     if newsdetails is not None:
+#         for ND in newsdetails:
+#             if ND.status:
+#                  ece.append({
+#                 "id": ND.id,
+#                 "headlines": ND.headlines,
+#                 "details": ND.details,
+#                 'dept': ND.dept,
+#                 'owner': ND.owner,
+#                 'img':ND.img,
+#                 "postedtime": ND.postedtime
+#             })
+#             else:
+#                 ece
+#     else:
+#         ece
                 
                 
-    context={'ece':ece}
-    return render(request, 'home/ece.html',context)
+#     context={'ece':ece}
+#     return render(request, 'home/ece.html',context)
 
 def cse(request):
     #cse=News.objects.filter(dept='ComputerScience').order_by('postedtime')
@@ -270,7 +272,7 @@ def detailsnews(request,pk):
     elif detailsnews.dept=='Event':
          url='event'
     elif detailsnews.dept=='CDC':
-         url='cdc'
+         url='Career_DC'
     else: 
         url="index"
            
